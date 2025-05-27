@@ -32,7 +32,7 @@ A web application for managing sports facilities, user accounts, booking time sl
 
 ```bash
 git clone https://github.com/uzivatel/sportsbooking.git
-cd sportsbooking
+cd sports-booking
 ```
 2. **Create and activate virtual environment**
 ```bash
