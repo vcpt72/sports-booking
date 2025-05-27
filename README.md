@@ -1,1 +1,63 @@
-# sports-booking
+# SportBooking – Systém pro správu sportovišť a rezervací
+
+Webová aplikace umožňující správu sportovišť, vytváření uživatelských účtů, rezervace termínů a hodnocení sportovišť.
+
+## 🔧 Funkce aplikace
+
+- Registrace a přihlášení uživatelů
+- Rezervace sportovišť na zvolený den a čas
+- Správa rezervací (vytváření, úprava, mazání)
+- Uživatelský profil
+- Hodnocení sportovišť (1–5 hvězdiček + recenze)
+- Admin rozhraní pro správu obsahu
+- REST API pomocí Django Ninja
+
+---
+
+## 🧰 Použité technologie
+
+- Python 3.11+
+- Django 4.x
+- SQLite (výchozí databáze)
+- Django Ninja (pro REST API)
+- Bootstrap 5 (pro frontend)
+- Pydantic 2.x (přes Django Ninja)
+- Pillow (pro obrázky)
+
+---
+
+## 🚀 Instalace projektu
+
+1. **Naklonuj repozitář**
+
+```bash
+git clone https://github.com/uzivatel/sportrezerva.git
+cd sportrezerva
+```
+2. **Vytvoř a aktivuj virtuální prostředí**
+```bash
+python -m venv venv
+source venv/bin/activate  # Linux/macOS
+venv\Scripts\activate     # Windows
+```
+3. **Nainstaluj závislosti**
+```bash
+pip install -r requirements.txt
+```
+4. **Spusť migrace**
+```bash
+python manage.py migrate
+```
+5. **Vytvoř superuživatele (admina)**
+```bash
+python manage.py createsuperuser
+```
+6. **Spusť server**
+```bash
+python manage.py runserver
+```
+
+🔐 **Přístup do adminu**
+```url
+http://127.0.0.1:8000/admin
+```
