@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load times %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow-sm p-4">
+                <h1 class="text-center mb-4">Rezervace pro <strong>{{ facility.name }}</strong></h1>
+                <form method="post">
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+                        <label for="id_date" class="form-label">Datum</label>
+                        <input type="date" name="date" id="id_date" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_start_time" class="form-label">Čas začátku</label>
+                        <select name="start_time" id="id_start_time" class="form-control" required>
+                            {% for time in 6|times_until:22 %}
+                                <option value="{{ time }}">{{ time }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_end_time" class="form-label">Čas konce</label>
+                        <select name="end_time" id="id_end_time" class="form-control" required>
+                            {% for time in 6|times_until:22 %}
+                                <option value="{{ time }}">{{ time }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Rezervovat</button>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Rezervace list -->
+    <div class="row justify-content-center mt-5">
+        <div class="col-lg-8">
+            <h2 class="text-center mb-4">Aktuální rezervace</h2>
+            <div class="list-group shadow-sm">
+                {% for reservation in reservations %}
+                    <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong>{{ reservation.date }}</strong><br>
+                            {{ reservation.start_time }} - {{ reservation.end_time }}
+                        </div>
+                        <span class="badge bg-primary">{{ reservation.user.username }}</span>
+                    </div>
+                {% empty %}
+                    <div class="list-group-item text-center">
+                        Žádné rezervace
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

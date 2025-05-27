@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="card shadow-sm p-4">
+        <h1 class="card-title text-center mb-4">{{ facility.name }}</h1>
+        <ul class="list-group list-group-flush mb-4">
+            <li class="list-group-item"><strong>Typ sportu:</strong> {{ facility.sport_type }}</li>
+            <li class="list-group-item"><strong>Lokace:</strong> {{ facility.location }}</li>
+            <li class="list-group-item"><strong>Kapacita:</strong> {{ facility.capacity }}</li>
+            <li class="list-group-item"><strong>Popis:</strong> {{ facility.description }}</li>
+            {% if pricing %}
+           <li class="list-group-item"><strong>Cena za hodinu:</strong> {{ pricing.price_per_hour }} Kč</li>
+            {% endif %}
+            
+        </ul>
+        
+        <div class="d-flex justify-content-center mt-3">
+            <a href="{% url 'reservation_create' pk=facility.pk %}" class="btn btn-primary me-3">Vytvořit rezervaci</a>
+            <a href="{% url 'index' %}" class="btn btn-outline-secondary">Zpět na seznam</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

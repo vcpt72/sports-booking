@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm p-4">
+                <h2 class="mb-4 text-center">Můj profil</h2>
+                <p><strong>Uživatelské jméno:</strong> {{ request.user.username }}</p>
+                <p><strong>Email:</strong> {{ request.user.email }}</p>
+                <p><strong>Telefon:</strong> {{ profile.phone_number }}</p>
+                <p><strong>Adresa:</strong> {{ profile.address }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

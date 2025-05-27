@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-sm p-4 text-center">
+        <h2 class="mb-4">Smazat rezervaci?</h2>
+        <p>Opravdu chcete smazat rezervaci na <strong>{{ reservation.facility.name }}</strong> dne <strong>{{ reservation.date }}</strong> od <strong>{{ reservation.start_time }}</strong> do <strong>{{ reservation.end_time }}</strong>?</p>
+        <form method="post">
+          {% csrf_token %}
+          <div class="d-flex justify-content-center gap-3">
+            <button type="submit" class="btn btn-danger">Ano, smazat</button>
+            <a href="{% url 'reservation_list' %}" class="btn btn-secondary">Zrušit</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

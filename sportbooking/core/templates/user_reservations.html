@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="mb-4 text-center">Moje rezervace</h1>
+
+    {% if reservations %}
+        <div class="list-group">
+            {% for reservation in reservations %}
+            <div class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <strong>{{ reservation.facility.name }}</strong><br>
+                    Datum: {{ reservation.date }}<br>
+                    Čas: {{ reservation.start_time }} - {{ reservation.end_time }}
+                </div>
+                <div>
+                    <a href="{% url 'reservation_edit' reservation.pk %}" class="btn btn-sm btn-outline-primary me-2">Upravit</a>
+                    <form method="post" action="{% url 'reservation_delete' reservation.pk %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Opravdu chcete rezervaci zrušit?');">Zrušit</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-center">Nemáte žádné rezervace.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

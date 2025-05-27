@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sport Booking</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+</head>
+<body>
+    <!-- Navigace -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'index' %}">Sport Booking</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'index' %}">Domů</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'index' %}">Sportoviště</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'index' %}">O nás</a>
+                        </li>
+                        {% if user.is_authenticated %}
+    <li class="nav-item">
+        <a class="nav-link disabled" href="#">Přihlášen: {{ user.username }}</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'logout' %}">Odhlásit</a>
+    </li>
+{% else %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'login' %}">Přihlásit</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'register' %}">Registrovat</a>
+    </li>
+{% endif %}
+{% if user.is_authenticated %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'user_profile' %}">Můj profil</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'user_reservations' %}">Moje Rezervace</a>
+    </li>
+{% endif %}
+
+                    </ul>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% if messages %}
+    <div class="container mt-4">
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+    <!-- Záhlaví stránky -->
+    <header class="bg-primary text-white text-center py-5 mb-4">
+        <div class="container">
+            <h1 class="display-4">Vítejte ve VŠB Sport Booking</h1>
+            <p class="lead">Rezervujte sportoviště jednoduše a rychle</p>
+        </div>
+    </header>
+
+    <div class="wrapper">
+        
+        {% block content %}
+        <!-- Obsah stránky bude zde vložen -->
+        {% endblock %}
+  
+    </div>
+
+    <!-- Bootstrap JS a jQuery pro funkčnost navigace -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <footer class="bg-dark text-white text-center w-100 mt-5">
+    <div class="container py-4">
+        <p>&copy; Patrik Vachník 2025.</p>
+       <a class="nav-link" href="{% url 'contact' %}">Kontakt</a>
+    </div>
+</footer>
+</body>
+</html>
+
+<style>
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.wrapper {
+  flex: 1; /* zabere veškerý volný prostor mezi headerem (pokud máš) a footerem */
+}
+</style>

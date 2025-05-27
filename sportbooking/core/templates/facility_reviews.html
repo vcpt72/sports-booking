@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="mb-4">Recenze pro {{ facility.name }}</h2>
+
+    {% if user.is_authenticated %}
+        <div class="card mb-4">
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Přidat recenzi</button>
+                </form>
+            </div>
+        </div>
+    {% else %}
+        <p>Pro přidání recenze se prosím <a href="{% url 'login' %}">přihlaste</a>.</p>
+    {% endif %}
+
+    <h4 class="mb-3">Všechny recenze</h4>
+    {% for review in reviews %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5>{{ review.user.username }} – {{ review.rating }}/5</h5>
+                <p>{{ review.text }}</p>
+                <small class="text-muted">{{ review.created_at|date:"d.m.Y H:i" }}</small>
+            </div>
+        </div>
+    {% empty %}
+        <p>Zatím žádné recenze.</p>
+    {% endfor %}
+</div>
+{% endblock %}

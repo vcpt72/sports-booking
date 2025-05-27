@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1 class="text-center my-5">Sportoviště</h1>
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for facility in facilities %}
+                <div class="col">
+                    <div class="card shadow-sm">
+                        {% if facility.image %}
+                            <img src="{% static 'images/'|add:facility.image.name %}" class="card-img-top" alt="{{ facility.name }}" style="height: 200px; object-fit: cover;">
+                        {% else %}
+                            <img src="{% static 'images/default.jpg' %}" class="card-img-top" alt="Default Image" style="height: 200px; object-fit: cover;">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title text-center">{{ facility.name }}</h5>
+                            <p class="card-text text-center">{{ facility.description }}</p>
+                            <div class="d-flex justify-content-center">
+                                <a href="{% url 'reservation_create' pk=facility.pk %}" class="btn btn-primary">Rezervovat</a>
+                                <div style="width: 12px;"></div>
+                                <a href="{% url 'facility_detail' facility.pk %}" class="btn btn-secondary">Detail</a>
+                                <div style="width: 12px;"></div>
+                                <a href="{% url 'facility_reviews' pk=facility.pk %}" class="btn btn-secondary">Recenze</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <!-- Sekce O nás -->
+    <section id="about-us" class=" py-5 mt-5" >
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h2 class="display-4" >O nás</h2>
+                    <p class="lead">
+                        Jsme tým, který se věnuje usnadnění rezervace sportovních zařízení. Naším cílem je zjednodušit a zefektivnit proces rezervací sportovišť. Ať už chcete hrát fotbal, volejbal nebo basketbal, máme pro vás ideální místo.
+                    </p>
+                    <p>
+                        Naše platforma vám umožňuje snadno vyhledávat sportovní zařízení, provádět rezervace v reálném čase a přizpůsobit si rezervaci podle vašich potřeb.
+                    </p>
+                    <p>
+                        Podporujeme různé typy sportů a neustále rozšiřujeme naši nabídku, aby každý mohl najít místo pro svůj oblíbený sport. Připojte se k nám a rezervujte si sportoviště rychle a pohodlně!
+                    </p>
+                </div>
+                <div class="col-md-4" style="padding: 100px;">
+                    <img src="{% static 'images/team.png' %}" alt="Sport Booking" class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
