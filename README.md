@@ -65,6 +65,8 @@ http://127.0.0.1:8000/admin
 
 ![image](https://github.com/user-attachments/assets/7e8998d2-74ad-46c5-a4ab-d255b3adef24)
 
+![image](https://github.com/user-attachments/assets/aeb90daa-b068-4518-b888-c95f5f9106c5)
+
 
 ![image](https://github.com/user-attachments/assets/51e5d8bb-115f-438a-9b73-d2c93c80627a)
 
