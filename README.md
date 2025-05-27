@@ -61,3 +61,12 @@ python manage.py runserver
 ```url
 http://127.0.0.1:8000/admin
 ```
+![image](https://github.com/user-attachments/assets/60e56584-99d6-49fc-9dde-f97ff9f89c3a)
+
+![image](https://github.com/user-attachments/assets/7e8998d2-74ad-46c5-a4ab-d255b3adef24)
+
+
+![image](https://github.com/user-attachments/assets/51e5d8bb-115f-438a-9b73-d2c93c80627a)
+
+![image](https://github.com/user-attachments/assets/62578082-e586-4c15-ad24-3cc71cdeb1ba)
+
