@@ -1,63 +1,63 @@
-# SportBooking – Systém pro správu sportovišť a rezervací
+# SportBooking – Sports Facility and Reservation Management System
 
-Webová aplikace umožňující správu sportovišť, vytváření uživatelských účtů, rezervace termínů a hodnocení sportovišť.
+A web application for managing sports facilities, user accounts, booking time slots, and rating venues.
 
-## 🔧 Funkce aplikace
+## 🔧 Features
 
-- Registrace a přihlášení uživatelů
-- Rezervace sportovišť na zvolený den a čas
-- Správa rezervací (vytváření, úprava, mazání)
-- Uživatelský profil
-- Hodnocení sportovišť (1–5 hvězdiček + recenze)
-- Admin rozhraní pro správu obsahu
-- REST API pomocí Django Ninja
+- User registration and login
+- Booking sports facilities for chosen date and time
+- Reservation management (create, update, delete)
+- User profiles
+- Facility ratings (1–5 stars + reviews)
+- Admin interface for content management
+- REST API built with Django Ninja
 
 ---
 
-## 🧰 Použité technologie
+## 🧰 Technologies Used
 
 - Python 3.11+
 - Django 4.x
-- SQLite (výchozí databáze)
-- Django Ninja (pro REST API)
-- Bootstrap 5 (pro frontend)
-- Pydantic 2.x (přes Django Ninja)
-- Pillow (pro obrázky)
+- SQLite (default database)
+- Django Ninja (for REST API)
+- Bootstrap 5 (frontend)
+- Pydantic 2.x (via Django Ninja)
+- Pillow (for image processing)
 
 ---
 
-## 🚀 Instalace projektu
+## 🚀 Installation
 
-1. **Naklonuj repozitář**
+1. **Clone the repository**
 
 ```bash
-git clone https://github.com/uzivatel/sportrezerva.git
-cd sportrezerva
+git clone https://github.com/uzivatel/sportsbooking.git
+cd sportsbooking
 ```
-2. **Vytvoř a aktivuj virtuální prostředí**
+2. **Create and activate virtual environment**
 ```bash
 python -m venv venv
 source venv/bin/activate  # Linux/macOS
 venv\Scripts\activate     # Windows
 ```
-3. **Nainstaluj závislosti**
+3. **Install dependencies**
 ```bash
 pip install -r requirements.txt
 ```
-4. **Spusť migrace**
+4. **Run migrations**
 ```bash
 python manage.py migrate
 ```
-5. **Vytvoř superuživatele (admina)**
+5. **Create superuser (admin)**
 ```bash
 python manage.py createsuperuser
 ```
-6. **Spusť server**
+6. **Run server**
 ```bash
 python manage.py runserver
 ```
 
-🔐 **Přístup do adminu**
+🔐 **Admin panel**
 ```url
 http://127.0.0.1:8000/admin
 ```
